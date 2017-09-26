@@ -13,3 +13,10 @@ class Carte:
     def __repr__(self):
         return "<Carte {}>".format(self.nom)
 
+    def __str__(self):
+        display = ""
+        x_index = 1
+        y_index = 1
+        while x_index <= self.labyrinthe.x_max
+
+
