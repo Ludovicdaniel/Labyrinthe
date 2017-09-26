@@ -12,3 +12,4 @@ class Carte:
 
     def __repr__(self):
         return "<Carte {}>".format(self.nom)
+
