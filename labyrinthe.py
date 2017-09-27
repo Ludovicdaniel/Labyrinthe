@@ -128,6 +128,62 @@ class Labyrinthe:
         if not self.gagnee and nombre > 1:
             self.deplacer_robot(direction,nombre - 1)
 
+    def creer_labyrinthe_depuis_chaine(chaine):
+        """ Méthode pour créer un labyrinthe depuis une chaine de caractère 
+        Elle retourne un objet de type Labyrinthe """
+
+
+        # Définition des symboles
+        symboles = {
+                "o": Mur,
+                "x": Robot,
+                ".": Porte,
+                "u": Sortie,
+                }
+
+        x = 0
+        y = 0
+
+        robot = None
+        obstacles = []
+
+        # Pour chaque lettre dans la chaine passé en paramètre
+        for lettre in chaine:
+            # Si la lettre est un retour à la ligne \n, on descend d'un coordonné y
+            if lettre == "\n":
+                x = 0
+                y += 1
+                continue
+
+            elif:
+                lettre == " ": # Si la lettre est un espace on ne fait rien même si exception
+                    pass 
+
+            elif: letter.lower() in symboles: # Si la lettre est dans la liste des symboles
+                classe = symboles[lettre.lower()]
+                objet = classe(x,y)
+                if type(objet) is Robot: # Si le type de la classe est Robot
+                    if robot: # Si l'objet robot existe déja
+                        raise ValueError("Il ne peut y avoir qu'un robot")
+                    robot = objet # Sinon on le crée
+                else: # Si c'est pas un robot, c'est donc un obstacle
+                    obstacles.append(objet) # On ajoute l'objet aux obstacles
+
+            else:
+                raise ValueError("Symbole inconnu")
+
+            x += 1
+
+        labyrinthe = Labyrinthe(robot,obstacles)
+        return labyrinthe
+
+
+
+
+
+
+
+
 
 
             
