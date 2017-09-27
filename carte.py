@@ -2,6 +2,8 @@
 
 """Ce module contient la classe Carte."""
 
+from labyrinthe import creer_labyrinthe_depuis_chaine
+
 class Carte:
 
     """Objet de transition entre un fichier et un labyrinthe."""
@@ -13,10 +15,5 @@ class Carte:
     def __repr__(self):
         return "<Carte {}>".format(self.nom)
 
-    def __str__(self):
-        display = ""
-        x_index = 1
-        y_index = 1
-        while x_index <= self.labyrinthe.x_max
 
 

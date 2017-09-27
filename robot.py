@@ -2,9 +2,10 @@
 
 """ Ce module contient la classe robot """
 
-class robot:
+class Robot:
     """ Classe représentant un robot """
-    symbole = "R"
+    symbole = "X"
+    nom = "robot"
 
     # Constructeur prennant en paramètre les coordonnées x et y du robot
     def __init__(self,x,y):
@@ -13,11 +14,11 @@ class robot:
 
     # Méthode spéciale qui permet de représenter l'objet dans l'interpréteur python
     def __repr__(self):
-        return "<Robot = x={} y={}".format(self.x,self.y)
+        return "<Robot (x={} y={})".format(self.x,self.y)
 
     # Méthode qui permet d'afficher le Robot 
     def __str__(self):
-        return "Robot {}.{}".format(self.x,self.y)
+        return "Robot ({}.{})".format(self.x,self.y)
 
 
 
