@@ -55,13 +55,13 @@ class Labyrinthe:
                     chaine_grille += case.symbole # On ajoute à la chaine grille le symbole de l'objet case
                 else:
                     chaine_grille += " " # Si il n'y a pas d'objet dans la grille ayant comme clé le tuple (x,y), on ajoute un espace vide
-
+                x += 1
             # On ajoute un saut de ligne et on incrémente y puisque qu'on passe à la prochaine ligne
-            chaine_grille += "\n"
+            chaine_grille += "\r\n"
             y += 1
 
         # Une fois toute la grille parcourue, on affiche la grille
-        print chaine_grille
+        print (chaine_grille)
 
     def actualiser_invisibles(self):
         """ Cette méthode actualise les obstacles invisibles.
@@ -82,23 +82,23 @@ class Labyrinthe:
         robot = self.robot
         coordonnees = [robot.x,robot.y] # On récupère les coordonnées du robot
         if direction == "nord":         # Si le robot va vers le haut, on décrémente le y de 1
-            coords[1] -= 1
+            coordonnees[1] -= 1
 
         elif direction == "est":
-            coords[0] += 1
+            coordonnees[0] += 1
 
         elif direction == "sud":
-            coords[1] += 1
+            coordonnees[1] += 1
 
         elif direction == "ouest":
-            coords[0] -= 1
+            coordonnees[0] -= 1
 
         else:
             raise ValueError("Direction inconnue")
 
 
-        x,y = coords
-        if x >= 0 and x < self.limite_x and y >= 0 and y < self.limit_y:
+        x,y = coordonnees # Ce sont les nouvelles coordonnées du robot après le choix du joueur
+        if x >= 0 and x < self.limite_x and y >= 0 and y < self.limite_y:
             # On essaye de déplacer le robot
             # On vérifie qu'il n'y a pas d'obstacle
             obstacle = self.grille.get((x,y)) # Renvoie l'objet de coordonnées x,y
@@ -123,7 +123,7 @@ class Labyrinthe:
 
                 # On appele la méthode arriver de l'obstacle, si il existe
                 if obstacle:
-                    self.arriver(self,robot)
+                    obstacle.arriver(self,robot)
         
         if not self.gagnee and nombre > 1:
             self.deplacer_robot(direction,nombre - 1)

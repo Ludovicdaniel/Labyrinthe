@@ -23,7 +23,7 @@ for nom_fichier in os.listdir("cartes"):
             try:
                 carte = Carte(nom_carte,contenu)
             except ValueError as err:
-                print "Erreur de lecture de {} : {}.".format(chemin,str(err))
+                print ("Erreur de lecture de {} : {}.").format(chemin,str(err))
             else:
                 cartes.append(carte)
 
@@ -43,18 +43,20 @@ while labyrinthe is None:
     try: 
         choix = int(choix)
     except ValueError:
-        print "Choix invalide"
+        print ("Choix invalide")
     else:
         if choix < 1 or choix > len(cartes):
-            print "Numero invalide"
+            print ("Numero invalide")
             continue
 
         carte = cartes[choix - 1]
         labyrinthe = carte.labyrinthe
+        print("#################   affichage du labyrinthe   ##################\n\n")
 
     # Maintenant on affiche la carte à chaque tour
 
 labyrinthe.afficher()
+
 while not labyrinthe.gagnee:
     coup = input("> ")
     if coup == "":
@@ -86,20 +88,20 @@ while not labyrinthe.gagnee:
 
         labyrinthe.deplacer_robot(direction, nombre)
     else:
-        print("Coups autorisés :")
-        print("  Q pour quitter la partie en cours")
-        print("  E pour déplacer le robot vers l'est")
-        print("  S pour déplacer le robot vers le sud")
-        print("  O pour déplacer le robot vers l'ouest")
-        print("  N pour déplacer le robot vers le nord")
+        print("########   Coups autorisés   ########\n")
+        print("  Q - Quitter la partie en cours")
+        print("  E - Déplacer le robot vers l'est")
+        print("  S - Déplacer le robot vers le sud")
+        print("  O - Déplacer le robot vers l'ouest")
+        print("  N - Déplacer le robot vers le nord")
         print("  Vous pouvez préciser un nombre après la direction")
         print("  Pour déplacer votre robot plus vite. Exemple n3")
 
-# if labyrinthe.gagnee:
-#     print("Félicitation ! Vous aez gagné !")
-#     labyrinthe.detruire()
-# else:
-#     print("Votre partie a été sauvegardée.")
+if labyrinthe.gagnee:
+    print("Félicitation ! Vous avez gagné !")
+    labyrinthe.detruire()
+else:
+    print("Votre partie a été sauvegardée.")
 
 
 
