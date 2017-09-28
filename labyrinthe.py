@@ -177,32 +177,20 @@ def creer_labyrinthe_depuis_chaine(chaine):
     labyrinthe = Labyrinthe(robot, obstacles)
     return labyrinthe
 
+def sauvegarder_labyrinthe(labyrinthe):
 
+    # Ouvrir un fichier en écriture
+    with open("sauvegarde","wb") as fichier:
+        mon_pickler = pickle.Pickler(fichier)
+        mon_pickler.dump(labyrinthe)
+        
 
+def recup_labyrinthe_sauvegarde():
+    with open("sauvegarde","rb") as fichier:
+        mon_pickler = pickle.Unpickler(fichier)
+        labyrinthe = mon_pickler.load()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-
+    return labyrinthe
 
 
 
